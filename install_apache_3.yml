@@ -20,7 +20,6 @@
       name: 
         - httpd
         - php
-      use_backend: dnf4
       state: latest
       update_cache: yes
     when: ansible_distribution == "Fedora"

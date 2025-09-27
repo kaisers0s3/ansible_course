@@ -4,14 +4,14 @@
   tasks: 
 
 
-  - name: install apache2 package on Ubuntu
+  - name: install apache2 package
     ansible.builtin.package:
       name:
         - "{{ apache_package }}"
-        - "{{ php_package }}"    
-      
-      use_backend: dnf4
+        - "{{ php_package }}"
       state: latest
       update_cache: yes
-      
+
+
+
 

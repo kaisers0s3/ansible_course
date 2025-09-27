@@ -19,7 +19,6 @@
 
   - name: update repository index on Fedora
     ansible.builtin.dnf:
-      use_backend: dnf4
       update_cache: yes
     when: ansible_distribution == "Fedora"
 
@@ -28,7 +27,6 @@
       name: 
         - httpd
         - php
-      use_backend: dnf4
       state: latest
     when: ansible_distribution == "Fedora"
 
