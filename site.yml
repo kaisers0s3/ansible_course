@@ -17,6 +17,8 @@
       update_cache: yes
     when: ansible_distribution == "Ubuntu"
 
+
+
 - hosts: web_servers
   become: true
   tasks:
@@ -25,8 +27,8 @@
     tags: apache,ubuntu
     ansible.builtin.apt:
       name:
-        - apache2
-        - libapache2-mod-php
+      - apache2
+      - libapache2-mod-php
     when: ansible_distribution == "Ubuntu"
 
   - name: install apache on webservers (fedora)
@@ -59,12 +61,11 @@
     register: httpd
 
   - name: restart httpd (fedora)
-    tags: ansible,fedora
+    tags: apache,fedora
     ansible.builtin.service:
       name: httpd
       state: restarted
     when: httpd.changed
-
 
   - name: copy html file for website
     tags: apache,ubuntu
