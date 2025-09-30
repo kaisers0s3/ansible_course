@@ -1,0 +1,3 @@
+# Managed by Ansible
+joemomma ALL=(ALL) NOPASSWD: ALL
+
