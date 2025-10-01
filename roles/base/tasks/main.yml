@@ -12,7 +12,7 @@
       group: root
       mode: 0440
 
-  - name: add sshe for joemomma user
+  - name: add ssh public key for joemomma user
     tags: always
     ansible.builtin.authorized_key:
       user: joemomma
