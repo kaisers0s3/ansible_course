@@ -16,6 +16,28 @@
       upgrade: dist
       update_cache: yes
     when: ansible_distribution == "Ubuntu"
+
+  - name: create user
+    tags: always
+    ansible.builtin.user:
+      name: joemomma
+      groups: root
+  
+  - name: add sudoers file for joemomma
+    tags: always
+    ansible.builtin.copy:
+      src: sudoer_joemomma
+      dest: /etc/sudoers.d/joemomma
+      owner: root
+      group: root
+      mode: 0440
+
+  - name: add ssh key for joemomma user
+    tags: always
+    ansible.builtin.authorized_key:
+      user: joemomma
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDug9jU0fXlSssm6cGWmPVOn9V9+/MhuGKfa0pgx2k+U mschrein@ubuntu-WS"
+
       
 - hosts: web_servers
   become: true
